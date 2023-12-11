@@ -52,6 +52,7 @@ function gaming_styles()
 
 
     wp_enqueue_style("css-swiper-bundle", _assets_paths("https://unpkg.com/swiper@7/swiper-bundle.min.cs"), [], "1.1", 'all');
+    wp_enqueue_style("css-custom-user", _assets_paths("css/custom.css"), [], "1.1", 'all');
 }
 
 add_action("wp_enqueue_scripts", "gaming_styles");

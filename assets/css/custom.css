@@ -1,0 +1,12 @@
+.main-banner .right-image img {
+    min-height: 380px;
+}
+
+.main-banner .right-image .price del {
+    display: none;
+}
+
+.trending .thumb img {
+    max-height: 225px;
+    object-fit: contain;
+}
