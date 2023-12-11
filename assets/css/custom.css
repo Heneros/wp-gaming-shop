@@ -6,7 +6,26 @@
     display: none;
 }
 
+
 .trending .thumb img {
     max-height: 225px;
     object-fit: contain;
+}
+
+.most-played img {
+    max-height: 164px;
+    object-fit: cover;
+}
+
+.most-played .item .down-content {
+    padding: 20px 0px 38px 0px;
+}
+
+.categories img {
+    height: 200px;
+    object-fit: cover;
+}
+
+.categories .item h4 {
+    padding: 20px 0;
 }
