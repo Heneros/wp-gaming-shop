@@ -3,7 +3,7 @@
 
 <head>
 
-<meta charset="<?php bloginfo('charset'); ?>">
+    <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><?php wp_title(); ?></title>
     <?php wp_head(); ?>
@@ -31,18 +31,20 @@
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo">
-                            <img src="assets/images/logo.png" alt="" style="width: 158px;">
-                        </a>
+                        <!--  <a href="<?php echo site_url('/'); ?>" class="logo">
+                       <img src="<?php echo _assets_paths('images/logo.png'); ?>" alt="logo image" style="width: 158px;">
+                     
+                        </a> -->
+                        <?php echo the_custom_logo(); ?>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
-                        <ul class="nav">
-                            <li><a href="index.html" class="active">Home</a></li>
-                            <li><a href="shop.html">Our Shop</a></li>
-                            <li><a href="product-details.html">Product Details</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
-                            <li><a href="#">Sign In</a></li>
-                        </ul>
+                        <?php
+                        wp_nav_menu([
+                            'theme_location' => 'menu-header',
+                            'menu_class' => 'nav',
+                            'container' => 'ul'
+                        ]);
+                        ?>
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>
@@ -52,4 +54,5 @@
             </div>
         </div>
     </header>
+
     <!-- ***** Header Area End ***** -->

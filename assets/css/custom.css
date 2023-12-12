@@ -29,3 +29,41 @@
 .categories .item h4 {
     padding: 20px 0;
 }
+
+
+.main-nav .nav .current_page_item a {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.10);
+}
+
+
+
+.cta .subscribe .mc4wp-checkbox input[type=checkbox] {
+    width: 25px;
+    height: 21px;
+}
+
+.cta .subscribe .mc4wp-checkbox span {
+    padding-left: 15px;
+}
+
+.main-nav .custom-logo  {
+    width: 158px;
+    height: auto;
+}
+
+@media (max-width: 992px) {
+    .main-nav .custom-logo {
+        max-width: 110px;
+    }
+}
+
+@media (max-width: 767px) {
+    .header-area .main-nav .custom-logo-link {
+        position: absolute;
+        left: 30px;
+        top: 0px;
+        margin-left: 0px;
+        margin-top: 30px;
+    }
+}
