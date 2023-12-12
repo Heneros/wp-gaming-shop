@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Product loop sale flash
  *
@@ -15,18 +16,24 @@
  * @version     1.6.4
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 }
 
 global $post, $product;
+$product = wc_get_product(get_the_ID());
 
+$regular_price = $product->get_regular_price();
+$sale_price = $product->get_sale_price();
+
+$discount_percentage = ($regular_price && $sale_price) ? round(($regular_price - $sale_price) / $regular_price * 100) : 0;
+$discount_text = $discount_percentage ? '-' . $discount_percentage . '%' : '';
 ?>
-<?php if ( $product->is_on_sale() ) : ?>
+<?php if ($product->is_on_sale()) : ?>
 
-	<?php echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'woocommerce' ) . '</span>', $post, $product ); ?>
+	<span class="price"><em>$<?php echo $sale_price ?></em>$<?= $regular_price ?> </span>
 
-	<?php
+<?php
 endif;
 
 /* Omit closing PHP tag at the end of PHP files to avoid "headers already sent" issues. */

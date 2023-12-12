@@ -12,3 +12,5 @@ add_filter('woocommerce_breadcrumb_defaults', function () {
         'home'        => __('Home', 'gamong-shop'),
     );
 });
+
+

@@ -1,3 +1,48 @@
+
+document.addEventListener('DOMContentLoaded', function () {
+	jQuery(document).ready(function ($) {
+		$('.add-to-cart-btn').on('click', function (e) {
+			e.preventDefault();
+
+			let addToCartUrl = this.href;
+			let getIdFromUrl = addToCartUrl.split('=');
+
+			let productID = parseInt(getIdFromUrl[1]);
+	
+			$.ajax({
+				type: "POST",
+				url: my_ajax_object.ajax_url,
+				cache: false,
+				data: {
+					product_id: productID,
+					action: 'check_if_product_exist_in_cart'
+				},
+				success: function (response) {
+					$.ajax({
+						type: 'POST',
+						url: my_ajax_object.ajax_url,
+						cache: false,
+						data: {
+							product_id: productID,
+							action: 'check_if_product_in_stock'
+						},
+						success: function (response_s) {
+							if (response_s.stock_status == true) {
+								alert('added');
+							} else {
+								alert("Error happened add-to-cart");
+							}
+						}
+					})
+				}
+			})
+		})
+	
+	});
+});
+
+
+
 (function ($) {
 
 	"use strict";
@@ -106,46 +151,9 @@
 
 
 	///custom code for wp
-	// alert(123);
+
 	// console.log(123);
 
-	$('.add-to-cart-btn').on('click', function (e) {
-		e.preventDefault();
-
-		let addToCartUrl = this.href;
-		let getIdFromUrl = addToCartUrl.split('=');
-
-		let productID = parseInt(getIdFromUrl[1]);
-		console.log(123)
-
-		$.ajax({
-			type: "POST",
-			url: ajax_object.ajax_url,
-			cache: false,
-			data: {
-				product_id: productID,
-				action: 'check_if_product_exist_in_cart'
-			},
-			success: function (response) {
-				$.ajax({
-					type: 'POST',
-					url: ajax_object.ajax_url,
-					cache: false,
-					data: {
-						product_id: productID,
-						action: 'check_if_product_in_stock'
-					},
-					success: function (response_s) {
-						if (response_s.stock_status == true) {
-							addToCart(addToCartUrl);
-						} else {
-							alert("Error happened add-to-cart");
-						}
-					}
-				})
-			}
-		})
-	})
 
 
 })(window.jQuery);
