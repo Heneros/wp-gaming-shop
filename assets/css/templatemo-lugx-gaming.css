@@ -891,13 +891,13 @@ Trending Style
   transition: all .3s;
 }
 
-.trending .item:hover .down-content h4 {
+/* .trending .item:hover .down-content h4 {
   color: #0071f8;
 }
 
 .trending .item:hover .down-content a {
   background-color: #0071f8;
-}
+} */
 
 
 /* 
@@ -1288,13 +1288,13 @@ Shop Page Style
   transition: all .3s;
 }
 
-.trending-box .item:hover .down-content h4 {
+/* .trending-box .item:hover .down-content h4 {
   color: #0071f8;
-}
+} */
 
-.trending-box .item:hover .down-content a {
+/* .trending-box .item:hover .down-content a {
   background-color: #0071f8;
-}
+} */
 
 .trending ul.pagination {
   margin-top: 50px;

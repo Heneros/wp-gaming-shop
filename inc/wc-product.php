@@ -66,8 +66,6 @@ function check_if_product_exist_in_cart()
 }
 
 
-
-
 function check_if_product_in_stock()
 {
     $p_id = (int)$_POST['product_id'];
@@ -123,7 +121,7 @@ function add_to_cart()
 function wps_change_products_title()
 {
 
-    echo '<h4 class="woocommerce-loop-product__title">' . get_the_title() . '</h4>';
+    echo '<h4 class="woocommerce-loop-product__title"><a href="' . get_permalink() . '" class="link">' . get_the_title() . '</a></h4>';
 }
 add_action('woocommerce_shop_loop_item_title', 'wps_change_products_title', 10);
 
@@ -134,9 +132,9 @@ remove_action('woocommerce_shop_loop_item_title', 'woocommerce_template_loop_pro
 
 remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10);
 remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10);
-remove_action('woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10);
+remove_action('woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 30);
 
 
 add_action('woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 5);
 add_action('woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10);
-add_action('woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 20);
+// add_action('woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 20);

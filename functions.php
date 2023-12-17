@@ -10,11 +10,6 @@ function _assets_paths($path)
 }
 
 
-
-
-
-
-
 function gaming_scripts()
 {
     wp_enqueue_script("ajax-script", get_template_directory_uri() . '/assets/js/custom.js', array("jquery"));
