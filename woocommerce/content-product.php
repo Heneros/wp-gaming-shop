@@ -27,15 +27,17 @@ if (empty($product) || !$product->is_visible()) {
 ?>
 <div <?php wc_product_class('col-lg-3 col-md-6 align-self-center mb-30 trending-items col-md-6', $product); ?>>
 	<div class="item">
-		<?php
-		do_action('woocommerce_before_shop_loop_item_title');
-		?>
+		<a href="<?= get_permalink() ?>">
+			<?php
+			do_action('woocommerce_before_shop_loop_item_title');
+			?>
+		</a>
 		<div class="down-content">
 			<?php
 			$categories  =  get_the_terms($product->get_id(), 'product_cat');
 			if ($categories && !is_wp_error($categories)) {
 				foreach ($categories as $category) {
-					echo '<span class="category">' . $category->name . '</span>'; 
+					echo '<span class="category">' . $category->name . '</span>';
 				}
 			}
 			?>

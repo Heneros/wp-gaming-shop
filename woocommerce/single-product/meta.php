@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Single Product Meta
  *
@@ -15,26 +16,38 @@
  * @version     3.0.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit;
 }
 
 global $product;
+
+$game_id = get_post_field('_custom_field_game');
+
 ?>
-<div class="product_meta">
+<ul class="product_meta">
 
-	<?php do_action( 'woocommerce_product_meta_start' ); ?>
+	<?php do_action('woocommerce_product_meta_start'); ?>
 
-	<?php if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>
+	<li>
+		<span>Game ID:</span>
+		<?php echo $game_id; ?>
+	</li>
 
-		<span class="sku_wrapper"><?php esc_html_e( 'SKU:', 'woocommerce' ); ?> <span class="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : esc_html__( 'N/A', 'woocommerce' ); ?></span></span>
+	<?php
+	$genre_list = wc_get_product_category_list($product->get_id(), ', ', '<li class="posted_in">', '', '</li>');
+	$tag_list = wc_get_product_tag_list($product->get_id(), ', ', '<li class="tagged_as">', '', '</li>');
 
-	<?php endif; ?>
+	$genre_text = wp_strip_all_tags($genre_list);
+	$tag_text = wp_strip_all_tags($tag_list);
 
-	<?php echo wc_get_product_category_list( $product->get_id(), ', ', '<span class="posted_in">' . _n( 'Category:', 'Categories:', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
+	echo '<li><span class="genre-wrapper"> Genre</span>' . 	$genre_text .  '</li>';
+	if ($tag_list) {
+		echo '<li><span class="tag-wrapper">Tags</span>' . $tag_text .   '</li>';
+	}
+	?>
 
-	<?php echo wc_get_product_tag_list( $product->get_id(), ', ', '<span class="tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
 
-	<?php do_action( 'woocommerce_product_meta_end' ); ?>
+	<?php do_action('woocommerce_product_meta_end'); ?>
 
-</div>
+</ul>

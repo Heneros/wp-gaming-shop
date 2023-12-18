@@ -195,3 +195,23 @@
 .trending-box .item .down-content .item-add-to-cart:hover {
     background-color: red;
 }
+
+.single-product .col-lg-6 .product_title,
+.single-product .col-lg-6 .price {
+    display: none;
+}
+
+.single-product .single-product ul li{
+    display: flex;
+}
+
+/* 
+.product-information__btns .quantity input::-webkit-outer-spin-button,
+.product-information__btns .quantity input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.product-information__btns .quantity input[type=number] {
+    -moz-appearance: textfield;
+} */
