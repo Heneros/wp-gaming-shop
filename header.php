@@ -10,7 +10,23 @@
 </head>
 
 <body <?php body_class(); ?>>
-
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- <h1 class="modal-title fs-5" id="cartModalLabel">Modal title</h1> -->
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Product added to cart</h6>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- ***** Preloader Start ***** -->
     <!-- <div id="js-preloader" class="js-preloader">
         <div class="preloader-inner">
@@ -33,7 +49,7 @@
                         <!-- ***** Logo Start ***** -->
                         <!--  <a href="<?php echo site_url('/'); ?>" class="logo">
                        <img src="<?php echo _assets_paths('images/logo.png'); ?>" alt="logo image" style="width: 158px;">
-                     
+                
                         </a> -->
                         <?php echo the_custom_logo(); ?>
                         <!-- ***** Logo End ***** -->

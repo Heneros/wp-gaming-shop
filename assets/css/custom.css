@@ -137,64 +137,61 @@
 .trending-box .item .down-content .link {
     font-size: 17px;
     font-weight: 600;
+    color: #1e1e1e;
+    display: block;
+    position: relative;
+    margin-top: 0px;
+    margin-bottom: 0px;
     transition: all .3s;
     margin-top: 0px;
     margin-bottom: 0px;
-    position: relative;
-    display: block;
     text-align: center;
     line-height: inherit;
-    width: inherit;
-    height: inherit;
     background-color: unset;
     color: #1e1e1e;
     border-radius: unset;
     bottom: unset;
     transition: all .3s;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 200px;
     padding: 0 12px;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    left: 0;
 }
 
+.trending-box .item .down-content span.category {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* .trending-box .item .down-content {
+    margin: 15px 0;
+} */
 
 .trending-box .item .down-content .item-add-to-cart {
     position: absolute;
     display: inline-block;
-    text-align: center;
     line-height: 40px;
     width: 40px;
     height: 40px;
     background-color: #ee626b;
     color: #fff;
     border-radius: 50%;
-    right: 8px;
-    bottom: 25px;
+    /* right: 0;
+    left: 0;
+    bottom: 25%; */
+    bottom: 30px;
+    right: 12px;
+    text-align: center;
+    margin: 0 auto;
     transition: all .3s;
 }
 
 .trending-box .item .down-content .item-add-to-cart:hover {
     background-color: red;
 }
-
-/* .trending .item:hover .down-content a {
-    background-color: unset !important;
-} */
-
-/* a:hover {
-    background-color: unset !important;
-} */
-
-
-/* .trending .item:hover .down-content a {
-    background-color: unset;
-} */
-
-/* 
-.trending-box .item .down-content .link:hover,
-.trending-box .item .down-content .woocommerce-loop-product__title:hover,
-.trending-box .item .down-content a:hover {
-    /* color: unset;
-    background-color: unset; 
-} */

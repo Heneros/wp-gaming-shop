@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
 						},
 						success: function (response_s) {
 							if (response_s.stock_status == true) {
-								alert('added');
+								// alert('added');
 							} else {
 								alert("Error happened add-to-cart");
 							}

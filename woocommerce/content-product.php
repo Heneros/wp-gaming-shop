@@ -32,6 +32,14 @@ if (empty($product) || !$product->is_visible()) {
 		?>
 		<div class="down-content">
 			<?php
+			$categories  =  get_the_terms($product->get_id(), 'product_cat');
+			if ($categories && !is_wp_error($categories)) {
+				foreach ($categories as $category) {
+					echo '<span class="category">' . $category->name . '</span>'; 
+				}
+			}
+			?>
+			<?php
 			do_action('woocommerce_after_shop_loop_item_title');
 			do_action('woocommerce_shop_loop_item_title');
 			do_action('woocommerce_after_shop_loop_item');
