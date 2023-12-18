@@ -32,9 +32,7 @@
 
                     $price = $product->get_price_html();
                     $product_name = $product->get_name();
-
                     $product_category =   wc_get_product_category_list(get_the_ID());
-
 
                     $regular_price = $product->get_regular_price();
                     $sale_price = $product->get_sale_price();
@@ -42,13 +40,12 @@
                     $discount_percentage = ($regular_price && $sale_price) ? round(($regular_price - $sale_price) / $regular_price * 100) : 0;
                     $discount_text = $discount_percentage ? '-' . $discount_percentage . '%' : '';
 
-
             ?>
                     <div class="col-lg-3 col-md-6">
                         <div class="item">
                             <div class="thumb">
                                 <a href="<?php echo  $product_permalink; ?>"><img src="<?php echo esc_url($image_url); ?>" alt=""></a>
-                                <span class="price"><em>$<?php echo $sale_price ?></em>$<?= $regular_price ?> </span>
+                                <span class="price"><em>$<?php echo $regular_price ?></em>$<?= $sale_price ?> </span>
                             </div>
                             <div class="down-content">
                                 <?php
@@ -62,7 +59,16 @@
                                 }
                                 ?>
                                 <h4><?php echo $product_name; ?></h4>
-                                <a class="add-to-cart" href="<?php echo site_url('/cart/?add-to-cart=') . absint($product->get_id()); ?>"><i class="fa fa-shopping-bag"></i></a>
+                                <?php
+                                if (is_user_logged_in()) {
+                                ?>
+                                    <a class="add-to-cart item-add-to-cart" href="<?php echo site_url('/cart/?add-to-cart=') . absint($product->get_id()); ?>"><i class="fa fa-shopping-bag"></i></a>
+                                <?php
+                                } else {
+                                    echo '<a class="login-link" href="' . site_url('/my-account') . '"><button>Log in to purchase</button></a>';
+                                }
+                                ?>
+
                             </div>
                         </div>
                     </div>

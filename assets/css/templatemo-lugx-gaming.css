@@ -876,7 +876,7 @@ Trending Style
   transition: all .3s;
 }
 
-.trending .item .down-content a {
+/* .trending .item .down-content a {
   position: absolute;
   display: inline-block;
   text-align: center;
@@ -889,7 +889,7 @@ Trending Style
   right: 25px;
   bottom: 25px;
   transition: all .3s;
-}
+} */
 
 /* .trending .item:hover .down-content h4 {
   color: #0071f8;
@@ -1273,7 +1273,7 @@ Shop Page Style
   transition: all .3s;
 }
 
-.trending-box .item .down-content a {
+/* .trending-box .item .down-content a {
   position: absolute;
   display: inline-block;
   text-align: center;
@@ -1286,7 +1286,7 @@ Shop Page Style
   right: 25px;
   bottom: 25px;
   transition: all .3s;
-}
+} */
 
 /* .trending-box .item:hover .down-content h4 {
   color: #0071f8;

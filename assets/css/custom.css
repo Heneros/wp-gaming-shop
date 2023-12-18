@@ -117,7 +117,6 @@
 .trending ul.page-numbers li:has(.current) {
     background-color: #0071f8;
     color: #fff;
-
     display: inline-block;
     width: 40px;
     height: 40px;
@@ -134,6 +133,7 @@
     justify-content: center;
 }
 
+.trending .item .down-content h4,
 .trending-box .item .down-content .link {
     font-size: 17px;
     font-weight: 600;
@@ -160,6 +160,7 @@
     left: 0;
 }
 
+.trending .item .down-content span.category,
 .trending-box .item .down-content span.category {
     width: 100%;
     display: flex;
@@ -172,7 +173,7 @@
 /* .trending-box .item .down-content {
     margin: 15px 0;
 } */
-
+.trending .item .down-content .item-add-to-cart,
 .trending-box .item .down-content .item-add-to-cart {
     position: absolute;
     display: inline-block;
@@ -192,7 +193,7 @@
     transition: all .3s;
 }
 
-.trending-box .item .down-content .item-add-to-cart:hover {
+.trending .item .down-content .item-add-to-cart:hover .trending-box .item .down-content .item-add-to-cart:hover {
     background-color: red;
 }
 
@@ -201,17 +202,40 @@
     display: none;
 }
 
-.single-product .single-product ul li{
+.single-product .single-product ul li {
     display: flex;
 }
 
-/* 
-.product-information__btns .quantity input::-webkit-outer-spin-button,
-.product-information__btns .quantity input::-webkit-inner-spin-button {
+.cart .quantity input::-webkit-outer-spin-button,
+.cart .quantity input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
 
-.product-information__btns .quantity input[type=number] {
+.cart .quantity input[type=number] {
     -moz-appearance: textfield;
-} */
+}
+
+.login-link {
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.single-product form .add-to-cart-with-quantity-btn {
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    background-color: #ee626b;
+    color: #fff;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 0px 25px;
+    border: none;
+    border-radius: 25px;
+    transition: all .3s;
+}
+.single-product form .add-to-cart-with-quantity-btn  i {
+    margin-right: 5px;
+  }

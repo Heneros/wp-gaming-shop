@@ -22,16 +22,20 @@ if (!defined('ABSPATH')) {
 
 global $product;
 
-echo apply_filters(
-	'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
-	sprintf(
-		'<a href="%s" data-bs-toggle="modal" data-bs-target="#cartModal"  data-quantity="%s" class="%s item-add-to-cart" %s><i class="fa fa-shopping-bag"></i></a>',
-		esc_url($product->add_to_cart_url()),
-		esc_attr(isset($args['quantity']) ? $args['quantity'] : 1),
-		esc_attr('add-to-cart-btn'),
-		isset($args['attributes']) ? wc_implode_html_attributes($args['attributes']) : '',
-		esc_html($product->add_to_cart_text())
-	),
-	$product,
-	$args
-);
+if (is_user_logged_in()) :
+	echo apply_filters(
+		'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
+		sprintf(
+			'<a href="%s" data-bs-toggle="modal" data-bs-target="#cartModal"  data-quantity="%s" class="%s item-add-to-cart" %s><i class="fa fa-shopping-bag"></i></a>',
+			esc_url($product->add_to_cart_url()),
+			esc_attr(isset($args['quantity']) ? $args['quantity'] : 1),
+			esc_attr('add-to-cart-btn'),
+			isset($args['attributes']) ? wc_implode_html_attributes($args['attributes']) : '',
+			esc_html($product->add_to_cart_text())
+		),
+		$product,
+		$args
+	);
+else :
+	echo '<a class="login-link" href="' . site_url('/my-account') . '"><button>Log in to purchase</button></a>';
+endif;

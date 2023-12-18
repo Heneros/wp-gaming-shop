@@ -4,7 +4,7 @@
             <div class="col-lg-12 text-center">
                 <div class="section-heading">
                     <h6>Categories</h6>
-                    <h2>Top Categories</h2>
+                    <h2>Top Genres</h2>
                 </div>
             </div>
 

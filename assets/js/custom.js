@@ -38,7 +38,63 @@ document.addEventListener('DOMContentLoaded', function () {
 			})
 		})
 
+
+		$(".add-to-cart-with-quantity-btn").on("click", function (e) {
+			e.preventDefault();
+			let addToCartUrlWithQuantity = $(this).attr('href');
+			let productID = parseInt(addToCartUrlWithQuantity.split('=')[1]);
+			let quantity = parseInt($(this).closest('form').find("input[name=quantity]").val());
+
+			if (!isNaN(quantity) && quantity !== 0) {
+				$.ajax({
+					method: "POST",
+					url: my_ajax_object.ajax_url,
+					cache: false,
+					data: {
+						product_id: productID,
+						action: 'check_if_product_exist_in_cart'
+					},
+					success: function (response_s) {
+						addToCartUrlWithQuantity += '&quantity=' + quantity;
+						$.ajax({
+							method: 'POST',
+							url: woocommerce_params.ajax_url,
+							cache: false,
+							data: {
+								product_id: productID,
+								action: 'check_if_product_in_stock'
+							},
+							success: function (response_s) {
+								if (response_s.stock_status == true) {
+									addToCartQuantity(addToCartUrlWithQuantity);
+								} else {
+									console.log("Not added to cart with quantity. Simple product.");
+								}
+							}
+						})
+					}
+				});
+			}
+
+			console.log(quantity)
+		});
+
+
+		function addToCartQuantity(url) {
+			$.ajax({
+				url: url,
+				method: 'POST',
+				error: function (response) {
+					console.log(response);
+				}, success: function (response) {
+					console.log('Added single cart')
+				}
+			})
+		}
+
 	});
+
+
 });
 
 
@@ -102,12 +158,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 	// Menu Dropdown Toggle
-	if ($('.menu-trigger').length) {
-		$(".menu-trigger").on('click', function () {
-			$(this).toggleClass('active');
-			$('.header-area .nav').slideToggle(200);
-		});
-	}
+
 
 
 	// Menu elevator animation
@@ -153,6 +204,15 @@ document.addEventListener('DOMContentLoaded', function () {
 	///custom code for wp
 
 	setTimeout(function () {
+		if ($('.menu-trigger').length) {
+			console.log('menu-trigger');
+			$(".menu-trigger").on('click', function () {
+				$(this).toggleClass('active');
+				$('.header-area .nav').slideToggle(200);
+			});
+		}
+
+
 		$(".wpfFilterVerScroll").addClass("trending-filter");
 		$(".wpfFilterVerScroll").each(function () {
 			var input = $(this).find(".wpfLiLabel input:checked");
@@ -164,11 +224,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 
 		$('.woocommerce-pagination .page-numbers').addClass('pagination');
-
-
-
-
-
 		$('.woocommerce-pagination').removeClass('woocommerce-pagination');
 		$('.woocommerce-pagination').wrap('<div class="row"><div class="col-lg-12"></div></div>');
 
@@ -183,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		label.innerHTML = '<a href="' + cleanURL + '">Show All</a>';
 
 		allCategoriesItem.appendChild(label);
-		categoryList.insertBefore(allCategoriesItem, categoryList.firstChild);
+		// categoryList.insertBefore(allCategoriesItem, categoryList.firstChild);
 
 		categoryList.addEventListener('click', function (event) {
 			if (event.target.tagName === 'A' && event.target.parentElement.classList.contains('wpfLiLabel')) {
@@ -194,7 +249,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		if (!hasCategories) {
 			label.classList.add('activeWrapper');
-		}else{
+		} else {
 			label.classList.remove('activeWrapper');
 		}
 
