@@ -26,7 +26,7 @@ if (!$product->is_purchasable()) {
 
 echo wc_get_stock_html($product); // WPCS: XSS ok.
 
-if ($product->is_in_stock()) : ?>
+if ($product->is_in_stock() && is_user_logged_in()) : ?>
 
 	<?php do_action('woocommerce_before_add_to_cart_form'); ?>
 
@@ -47,11 +47,14 @@ if ($product->is_in_stock()) : ?>
 		do_action('woocommerce_after_add_to_cart_quantity');
 		?>
 
-		<a href="<?php echo site_url('/cart/?add-to-cart=') . absint($product->get_id()); ?>" name="add-to-cart" value="<?php echo esc_attr($product->get_id()); ?>" class="add-to-cart-with-quantity-btn"><i class="fa fa-shopping-bag"></i> <?php echo esc_html($product->single_add_to_cart_text()); ?></a>
+		<a data-bs-toggle="modal" data-bs-target="#cartModal" href="<?php echo site_url('/cart/?add-to-cart=') . absint($product->get_id()); ?>" name="add-to-cart" value="<?php echo esc_attr($product->get_id()); ?>" class="add-to-cart-with-quantity-btn"><i class="fa fa-shopping-bag"></i> <?php echo esc_html($product->single_add_to_cart_text()); ?></a>
 
 		<?php do_action('woocommerce_after_add_to_cart_button'); ?>
 	</form>
 
 	<?php do_action('woocommerce_after_add_to_cart_form'); ?>
 
-<?php endif; ?>
+<?php else :
+	echo '<a class="login-link" href="' . site_url('/my-account') . '"><button>Log in to purchase</button></a>';
+endif;
+?>

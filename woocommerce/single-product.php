@@ -23,7 +23,6 @@ if (!defined('ABSPATH')) {
 get_header();
 global $product;
 $product = wc_get_product(get_the_ID());
-
 $product_id = get_the_ID();
 
 
@@ -61,14 +60,17 @@ $product_description = $product->get_description();
 				</span>
 				<p>
 					<?=
-					$product_description ?>
+					$product_short_desc ?>
 				</p>
 				<style>
-				
+
 				</style>
 				<?php
-					do_action('woocommerce_single_product_summary');
+				do_action('woocommerce_single_product_summary');
 				?>
+			</div>
+			<div class="col-lg-12">
+				<div class="sep"></div>
 			</div>
 			<?php
 			/**
@@ -89,11 +91,13 @@ $product_description = $product->get_description();
 			 */
 			do_action('woocommerce_after_main_content');
 			?>
-
-
 		</div>
 	</div>
 </div>
+<!-- More Info. Tabs. Review section  -->
+<?php get_template_part('/template-parts/single-product/tabs'); ?>
+<!-- Related Games -->
+<?php get_template_part('/template-parts/single-product/related-games'); ?>
 <?php
 get_footer('shop');
 

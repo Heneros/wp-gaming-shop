@@ -22,7 +22,6 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                 </div>
             </div>
         </div>
@@ -47,11 +46,7 @@
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <!--  <a href="<?php echo site_url('/'); ?>" class="logo">
-                       <img src="<?php echo _assets_paths('images/logo.png'); ?>" alt="logo image" style="width: 158px;">
-                
-                        </a> -->
-                        <?php echo the_custom_logo(); ?>
+                        <?php  the_custom_logo(); ?>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <?php

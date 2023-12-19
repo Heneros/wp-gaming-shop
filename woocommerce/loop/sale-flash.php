@@ -31,7 +31,7 @@ $discount_text = $discount_percentage ? '-' . $discount_percentage . '%' : '';
 ?>
 <?php if ($product->is_on_sale()) : ?>
 
-	<span class="price"><em>$<?php echo $sale_price ?></em>$<?= $regular_price ?> </span>
+	<span class="price"><em>$<?php echo $regular_price ?></em>$<?php echo  $sale_price  ?> </span>
 
 <?php
 endif;

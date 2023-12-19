@@ -25,7 +25,7 @@ if (empty($product) || !$product->is_visible()) {
 	return;
 }
 ?>
-<div <?php wc_product_class('col-lg-3 col-md-6 align-self-center mb-30 trending-items col-md-6', $product); ?>>
+<div <?php wc_product_class('col-xl-3 col-lg-4 col-md-6 align-self-center mb-30 trending-items', $product); ?>>
 	<div class="item">
 		<a href="<?= get_permalink() ?>">
 			<?php

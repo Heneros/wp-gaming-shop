@@ -91,7 +91,6 @@ document.addEventListener('DOMContentLoaded', function () {
 				}
 			})
 		}
-
 	});
 
 
@@ -211,6 +210,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				$('.header-area .nav').slideToggle(200);
 			});
 		}
+		$(".custom-logo-link").addClass("logo");
 
 
 		$(".wpfFilterVerScroll").addClass("trending-filter");
@@ -218,8 +218,6 @@ document.addEventListener('DOMContentLoaded', function () {
 			var input = $(this).find(".wpfLiLabel input:checked");
 			if (input.length > 0) {
 				input.closest('.wpfLiLabel').addClass("activeWrapper");
-			} else {
-				console.log('Not Found');
 			}
 		});
 
@@ -238,8 +236,8 @@ document.addEventListener('DOMContentLoaded', function () {
 		label.innerHTML = '<a href="' + cleanURL + '">Show All</a>';
 
 		allCategoriesItem.appendChild(label);
-		// categoryList.insertBefore(allCategoriesItem, categoryList.firstChild);
-
+		categoryList.insertBefore(allCategoriesItem, categoryList.firstChild);
+		// console.log(categoryList);
 		categoryList.addEventListener('click', function (event) {
 			if (event.target.tagName === 'A' && event.target.parentElement.classList.contains('wpfLiLabel')) {
 				event.preventDefault();
@@ -254,7 +252,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 
 
-	}, 700)
+	}, 900)
 
 
 
