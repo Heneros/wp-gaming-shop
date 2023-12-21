@@ -46,16 +46,33 @@
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <?php  the_custom_logo(); ?>
-                        <!-- ***** Logo End ***** -->
-                        <!-- ***** Menu Start ***** -->
-                        <?php
-                        wp_nav_menu([
-                            'theme_location' => 'menu-header',
-                            'menu_class' => 'nav',
-                            'container' => 'ul'
-                        ]);
-                        ?>
+
+
+         
+                            <?php
+                            the_custom_logo(); 
+                            
+                            ?>
+                    
+                            <?php
+                                    if(is_user_logged_in()){
+                                        wp_nav_menu([
+                                            'theme_location' => 'menu-header',
+                                            'menu_class' => 'nav',
+                                            'container' => 'ul'
+                                        ]);
+                                    }else{
+                                        wp_nav_menu([
+                                            'theme_location' => 'menu-not-logged',
+                                            'menu_class' => 'nav',
+                                            'container' => 'ul'
+                                        ]);
+                                    }
+                    
+                            ?>
+                
+
+
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * My Account page
  *
@@ -15,22 +16,28 @@
  * @version 3.5.0
  */
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
 /**
  * My Account navigation.
  *
  * @since 2.6.0
  */
-do_action( 'woocommerce_account_navigation' ); ?>
+?>
+<?php get_template_part('/template-parts/header');
 
-<div class="woocommerce-MyAccount-content">
-	<?php
+?>
+<div class="container">
+	<div class="woocommerce-MyAccount-content">
+		<?php
+		do_action('woocommerce_account_navigation');
 		/**
 		 * My Account content.
 		 *
 		 * @since 2.6.0
 		 */
-		do_action( 'woocommerce_account_content' );
-	?>
+		do_action('woocommerce_account_content');
+		?>
+	</div>
+
 </div>

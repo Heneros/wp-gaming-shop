@@ -256,3 +256,18 @@
 .single-product .header-area .main-nav .nav li {
     margin: unset;
 }
+
+.woocommerce-account .woocommerce-MyAccount-content {
+    float: unset;
+    width: 100%;
+}
+
+
+.sub-menu {
+    display: none;
+}
+
+
+.menu-item-has-children:hover .sub-menu {
+    display: block;
+}

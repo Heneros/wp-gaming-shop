@@ -67,6 +67,7 @@ function gaming_setup()
 {
 
     register_nav_menu('menu-header', 'Header Menu');
+    register_nav_menu('menu-not-logged', 'Menu  Not Logged');
 
 
     add_theme_support('title-tag');

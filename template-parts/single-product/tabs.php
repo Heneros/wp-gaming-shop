@@ -29,7 +29,9 @@ $product_description = $product->get_description();
 
                             </div>
                             <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
-                               Review
+                                <?php
+                                echo comments_template();
+                                ?>
                             </div>
                         </div>
                     </div>
