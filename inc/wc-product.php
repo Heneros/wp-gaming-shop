@@ -30,10 +30,6 @@ function save_custom_field_game($post_id)
 }
 
 
-
-
-
-
 add_action("wp_ajax_check_if_product_exist_in_cart", "check_if_product_exist_in_cart");
 add_action("wp_ajax_nopriv_check_if_product_exist_in_cart", "check_if_product_exist_in_cart");
 

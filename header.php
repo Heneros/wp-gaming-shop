@@ -10,24 +10,25 @@
 </head>
 
 <body <?php body_class(); ?>>
-    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <!-- <h1 class="modal-title fs-5" id="cartModalLabel">Modal title</h1> -->
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h6>Product added to cart</h6>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <div class="site-container">
+        <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <!-- <h1 class="modal-title fs-5" id="cartModalLabel">Modal title</h1> -->
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h6>Product added to cart</h6>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- ***** Preloader Start ***** -->
-    <!-- <div id="js-preloader" class="js-preloader">
+        <!-- ***** Preloader Start ***** -->
+        <!-- <div id="js-preloader" class="js-preloader">
         <div class="preloader-inner">
             <span class="dot"></span>
             <div class="dots">
@@ -37,50 +38,51 @@
             </div>
         </div>
     </div> -->
-    <!-- ***** Preloader End ***** -->
+        <!-- ***** Preloader End ***** -->
+        <!-- ***** Header Area Start ***** -->
+        <header class="header-area header-sticky">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="main-nav">
+                            <!-- ***** Logo Start ***** -->
 
-    <!-- ***** Header Area Start ***** -->
-    <header class="header-area header-sticky">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav class="main-nav">
-                        <!-- ***** Logo Start ***** -->
 
 
-         
                             <?php
-                            the_custom_logo(); 
-                            
+                            the_custom_logo();
+
                             ?>
-                    
+
                             <?php
-                                    if(is_user_logged_in()){
-                                        wp_nav_menu([
-                                            'theme_location' => 'menu-header',
-                                            'menu_class' => 'nav',
-                                            'container' => 'ul'
-                                        ]);
-                                    }else{
-                                        wp_nav_menu([
-                                            'theme_location' => 'menu-not-logged',
-                                            'menu_class' => 'nav',
-                                            'container' => 'ul'
-                                        ]);
-                                    }
-                    
+                            if (is_user_logged_in()) {
+                                wp_nav_menu([
+                                    'theme_location' => 'menu-header',
+                                    'menu_class' => 'nav',
+                                    'container' => 'ul'
+                                ]);
+                            } else {
+                                wp_nav_menu([
+                                    'theme_location' => 'menu-not-logged',
+                                    'menu_class' => 'nav',
+                                    'container' => 'ul'
+                                ]);
+                            }
+
                             ?>
-                
 
 
-                        <a class='menu-trigger'>
-                            <span>Menu</span>
-                        </a>
-                        <!-- ***** Menu End ***** -->
-                    </nav>
+
+                            <a class='menu-trigger'>
+                                <span>Menu</span>
+                            </a>
+                            <!-- ***** Menu End ***** -->
+                        </nav>
+                    </div>
                 </div>
             </div>
-        </div>
-    </header>
-
-    <!-- ***** Header Area End ***** -->
+        </header>
+        <?php
+        ///var_dump(WC()->cart->get_cart());
+        ?>
+        <!-- ***** Header Area End ***** -->

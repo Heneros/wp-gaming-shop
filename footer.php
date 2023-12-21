@@ -1,4 +1,5 @@
 <?php wp_footer(); ?>
+</div>
 <footer>
   <div class="container">
     <div class="col-lg-12">

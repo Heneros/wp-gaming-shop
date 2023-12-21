@@ -6,12 +6,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 			let addToCartUrl = this.href;
 			let getIdFromUrl = addToCartUrl.split('=');
-
 			let productID = parseInt(getIdFromUrl[1]);
 
 			$.ajax({
 				type: "POST",
-				url: my_ajax_object.ajax_url,
+				url: ajax_object.ajax_url,
 				cache: false,
 				data: {
 					product_id: productID,
@@ -20,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				success: function (response) {
 					$.ajax({
 						type: 'POST',
-						url: my_ajax_object.ajax_url,
+						url: ajax_object.ajax_url,
 						cache: false,
 						data: {
 							product_id: productID,
@@ -29,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
 						success: function (response_s) {
 							if (response_s.stock_status == true) {
 								// alert('added');
+								addToCartQuantity(addToCartUrl)
 							} else {
 								alert("Error happened add-to-cart");
 							}
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			if (!isNaN(quantity) && quantity !== 0) {
 				$.ajax({
 					method: "POST",
-					url: my_ajax_object.ajax_url,
+					url: ajax_object.ajax_url,
 					cache: false,
 					data: {
 						product_id: productID,
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				});
 			}
 
-			console.log(quantity)
+			// console.log(quantity)
 		});
 
 
