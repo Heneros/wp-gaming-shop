@@ -120,6 +120,9 @@ get_template_part('/template-parts/header');
 
 					<?php do_action('woocommerce_register_form_end'); ?>
 
+					<?php
+					echo do_shortcode('[nextend_social_login provider="google"]');
+					?>
 				</form>
 
 			</div>

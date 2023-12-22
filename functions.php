@@ -3,6 +3,7 @@
 require get_template_directory() . '/inc/wc-product.php';
 require get_template_directory() . '/inc/wc-shop.php';
 require get_template_directory() . '/inc/wc-cart.php';
+require get_template_directory() . '/inc/wc-checkout.php';
 
 function _assets_paths($path)
 {
@@ -32,14 +33,6 @@ function gaming_scripts()
 }
 add_action('wp_enqueue_scripts', 'gaming_scripts');
 
-
-// function enqueue_custom_scripts()
-// {
-//     wp_enqueue_script("custom-script", _assets_paths("js/custom.js"), array('jquery'), "1.0", true);
-
-//     wp_localize_script("custom-script", "ajax_object", array("ajax_url" => admin_url("admin-ajax.php")));
-// }
-// add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');
 
 
 function gaming_styles()
