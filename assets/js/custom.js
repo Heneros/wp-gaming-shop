@@ -91,7 +91,20 @@ document.addEventListener('DOMContentLoaded', function () {
 				}
 			})
 		}
-	});
+
+		///phone number mask. contact us. 
+		function maskTelPhone(phone) {
+			return `(${phone.slice(0, 3)})-${phone.slice(3, 6)}-${phone.slice(6, 10)}`;
+		}
+		$('.num-phone').each(function () {
+			const phoneNumber = $(this).text().trim();
+			$(this).text(maskTelPhone(phoneNumber));
+		})
+
+
+	}) ///jquery ends
+
+
 
 
 });

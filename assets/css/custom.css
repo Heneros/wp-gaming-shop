@@ -360,3 +360,35 @@
     }
 
 }
+
+.contact-page .right-content form .orange-button {
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    background-color: #ee626b;
+    color: #fff;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 0px 25px;
+    border: none;
+    border-radius: 25px;
+    transition: all .3s;
+    cursor: pointer;
+}
+
+.contact-page .left-text ul li a {
+    display: block;
+    font-size: 16px;
+    color: #aaaaaa;
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+
+.woocommerce-MyAccount-navigation ul li {
+    padding: 10px 0;
+}
+
+.woocommerce-MyAccount-navigation ul li a {
+    color: #000;
+}

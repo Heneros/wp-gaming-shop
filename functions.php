@@ -4,6 +4,8 @@ require get_template_directory() . '/inc/wc-product.php';
 require get_template_directory() . '/inc/wc-shop.php';
 require get_template_directory() . '/inc/wc-cart.php';
 require get_template_directory() . '/inc/wc-checkout.php';
+require get_template_directory() . '/inc/wc-myaccount.php';
+
 
 function _assets_paths($path)
 {
