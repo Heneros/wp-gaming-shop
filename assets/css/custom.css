@@ -317,6 +317,9 @@
 
 .woocommerce-info {
     border-top-color: unset;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
 }
 
 .woocommerce-notices-wrapper {
@@ -391,4 +394,8 @@
 
 .woocommerce-MyAccount-navigation ul li a {
     color: #000;
+}
+
+.single-product .nav ul {
+    margin-top: unset !important;
 }
