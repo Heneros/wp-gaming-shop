@@ -399,3 +399,13 @@
 .single-product .nav ul {
     margin-top: unset !important;
 }
+
+.woocommerce-order .woocommerce-thankyou-order-received {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    border: 7px dotted green;
+    padding: 86px;
+    margin: 25px 0;
+    color: #008000;
+}
