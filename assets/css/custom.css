@@ -250,6 +250,7 @@
 .woocommerce-account .woocommerce-MyAccount-content {
     float: unset;
     width: 100%;
+    display: flex;
 }
 
 .sub-menu {
@@ -408,4 +409,24 @@
     padding: 86px;
     margin: 25px 0;
     color: #008000;
+}
+
+
+.text-align {
+    text-align: center;
+    margin: 10% auto;
+}
+
+.text-align h1 {
+    font-size: 110px;
+    font-weight: 600;
+}
+.text-align h5 {
+    padding: 15px 0;
+    font-size: 70px;
+    font-weight: 600;
+}
+.text-align p {
+    padding: 15px 0;
+    font-size: 45px;
 }

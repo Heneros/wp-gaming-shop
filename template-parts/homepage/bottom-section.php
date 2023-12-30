@@ -27,12 +27,9 @@
                             </div>
                             <div class="search-input">
                                 <?php
-                                echo do_shortcode('[contact-form-7 id="a5687e1" title="Subscribe form"]');
+                             ///   echo do_shortcode('[contact-form-7 id="a5687e1" title="Subscribe form"]');
+                                echo do_shortcode('[mc4wp_form id=126]');
                                 ?>
-                                <!-- <form id="subscribe" action="#">
-                                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Your email...">
-                                    <button type="submit">Subscribe Now</button>
-                                </form> -->
                             </div>
                         </div>
                     </div>
