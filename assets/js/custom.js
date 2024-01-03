@@ -100,9 +100,38 @@ document.addEventListener('DOMContentLoaded', function () {
 			const phoneNumber = $(this).text().trim();
 			$(this).text(maskTelPhone(phoneNumber));
 		})
+		function getFormData($form) {
+			var unindexed_array = $form.serializeArray();
+			var indexed_array = {};
+
+			$.map(unindexed_array, function (n, i) {
+				indexed_array[n['name']] = n['value'];
+			})
+			return indexed_array;
+		}
+
+		$("#registration_affiliate_btn").click(function (e) {
+			e.preventDefault();
+			// console.log($(this).serializeArray());
+			let formData = $("#affiliate_reg");
+			let dataFormArray = getFormData(formData);
+			console.log(dataFormArray)
+
+			if (dataFormArray.blog_url.length == 0 && dataFormArray.are_you_influencer.length == 0 && dataFormArray.visitor_number.length == 0) {
+				console.log(false)
+			} else {
+				$.ajax({
+					method: 'POST',
+					url: ajax_object.ajax_url
+				});
+			}
+
+		});
 
 
 	}) ///jquery ends
+
+
 
 
 
