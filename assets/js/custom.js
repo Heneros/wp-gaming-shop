@@ -75,7 +75,6 @@ document.addEventListener('DOMContentLoaded', function () {
 					}
 				});
 			}
-
 			// console.log(quantity)
 		});
 
@@ -100,6 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			const phoneNumber = $(this).text().trim();
 			$(this).text(maskTelPhone(phoneNumber));
 		})
+
 		function getFormData($form) {
 			var unindexed_array = $form.serializeArray();
 			var indexed_array = {};
@@ -110,22 +110,34 @@ document.addEventListener('DOMContentLoaded', function () {
 			return indexed_array;
 		}
 
+		///affiliate page registration
 		$("#registration_affiliate_btn").click(function (e) {
 			e.preventDefault();
 			// console.log($(this).serializeArray());
 			let formData = $("#affiliate_reg");
 			let dataFormArray = getFormData(formData);
-			console.log(dataFormArray)
+			// console.log(dataFormArray)
 
-			if (dataFormArray.blog_url.length == 0 && dataFormArray.are_you_influencer.length == 0 && dataFormArray.visitor_number.length == 0) {
+			if (dataFormArray.blog_url.length == 0 && dataFormArray.are_you_influencer.length == 0 && dataFormArray.visitors_number.length == 0) {
 				console.log(false)
 			} else {
 				$.ajax({
 					method: 'POST',
-					url: ajax_object.ajax_url
+					url: ajax_object.ajax_url,
+					cache: false,
+					data: {
+						dataFormArray: dataFormArray,
+						action: 'registration_affiliate'
+					},
+					success: function () {
+						// consoe.log("Success");
+						$("#affiliate_reg_button form button").trigger("click");
+					},
+					error: function (error) {
+						console.log(error);
+					}
 				});
 			}
-
 		});
 
 

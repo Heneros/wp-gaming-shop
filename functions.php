@@ -1,10 +1,12 @@
 <?php
 
-require get_template_directory() . '/inc/wc-product.php';
-require get_template_directory() . '/inc/wc-shop.php';
-require get_template_directory() . '/inc/wc-cart.php';
-require get_template_directory() . '/inc/wc-checkout.php';
-require get_template_directory() . '/inc/wc-myaccount.php';
+require get_template_directory() . '/inc/woocommerce/wc-product.php';
+require get_template_directory() . '/inc/woocommerce/wc-shop.php';
+require get_template_directory() . '/inc/woocommerce/wc-cart.php';
+require get_template_directory() . '/inc/woocommerce/wc-checkout.php';
+require get_template_directory() . '/inc/woocommerce/wc-myaccount.php';
+require get_template_directory() . '/inc/woocommerce/wc-affiliate.php';
+require get_template_directory() . '/inc/cpt.php';
 
 
 function _assets_paths($path)

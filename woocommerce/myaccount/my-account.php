@@ -28,16 +28,21 @@ defined('ABSPATH') || exit;
 
 ?>
 <div class="container">
-	<div class="woocommerce-MyAccount-content">
-		<?php
-		do_action('woocommerce_account_navigation');
-		/**
-		 * My Account content.
-		 *
-		 * @since 2.6.0
-		 */
-		do_action('woocommerce_account_content');
-		?>
+	<div class="row align-items-center">
+		<div class="col-md-4">
+			<div class="woocommerce-MyAccount-content">
+				<?php
+				do_action('woocommerce_account_navigation');
+				?>
+			</div>
+		</div>
+		<div class="col-md-8 ">
+			<div class="d-flex align-items-center justify-content-center">
+				<?php
+				do_action('woocommerce_account_content');
+				?>
+			</div>
+		</div>
 	</div>
-
+</div>
 </div>
