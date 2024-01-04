@@ -28,7 +28,7 @@ defined('ABSPATH') || exit;
 
 ?>
 <div class="container">
-	<div class="row align-items-center">
+	<div class="row ">
 		<div class="col-md-4">
 			<div class="woocommerce-MyAccount-content">
 				<?php

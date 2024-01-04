@@ -34,7 +34,7 @@ get_template_part('/template-parts/header');
 		<div class="col-md-6 col-sm-12   log-parent__information">
 			<div class="log__text-info">
 				<div class="image">
-					<a href="<?= home_url(); ?>">
+					<a href="#!">
 						<img src="<?php echo get_template_directory_uri() ?>/assets/images/logo.png" alt="">
 
 					</a>
@@ -45,7 +45,7 @@ get_template_part('/template-parts/header');
 
 		<div class="col-md-6 col-sm-12  log-parent__form">
 
-			<form class="woocommerce-form woocommerce-form-login login mt-4" method="post">
+			<form class="woocommerce-form woocommerce-form-login login mt-4 js-form-validate" id="validate-form" method="post" novalidate <?php do_action('woocommerce_register_form_tag'); ?>>
 				<?php do_action('woocommerce_login_form_start'); ?>
 
 				<div class="form-group log-field">
@@ -59,14 +59,11 @@ get_template_part('/template-parts/header');
 				</div>
 
 				<div class="bottom-form mt-4">
-
 					<?php wp_nonce_field('woocommerce-login', 'woocommerce-login-nonce'); ?>
-					<button type="submit" class="  btn btn-primary  woocommerce-button button woocommerce-form-login__submit<?php echo esc_attr(wc_wp_theme_get_element_class_name('button') ? ' ' . wc_wp_theme_get_element_class_name('button') : ''); ?>" name="login" value="<?php esc_attr_e('Log in', 'woocommerce'); ?>"><?php esc_html_e('Log in', 'woocommerce'); ?></button>
-
+					<button type="submit" class="btn btn-primary  woocommerce-button button woocommerce-form-login__submit<?php echo esc_attr(wc_wp_theme_get_element_class_name('button') ? ' ' . wc_wp_theme_get_element_class_name('button') : ''); ?>" name="login" value="<?php esc_attr_e('Log in', 'woocommerce'); ?>"><?php esc_html_e('Log in', 'woocommerce'); ?></button>
 					<a href="#!">Forget password?</a>
 					<hr>
 					<a data-bs-toggle="modal" data-bs-target="#myAccountModal" class="btn btn-success"> Create New Account</a>
-
 				</div>
 				<?php do_action('woocommerce_login_form_end'); ?>
 			</form>

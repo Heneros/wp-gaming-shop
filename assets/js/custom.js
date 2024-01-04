@@ -1,6 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 	jQuery(document).ready(function ($) {
+
 		$('.add-to-cart-btn').on('click', function (e) {
 			e.preventDefault();
 
@@ -75,7 +76,6 @@ document.addEventListener('DOMContentLoaded', function () {
 					}
 				});
 			}
-			// console.log(quantity)
 		});
 
 
@@ -113,11 +113,8 @@ document.addEventListener('DOMContentLoaded', function () {
 		///affiliate page registration
 		$("#registration_affiliate_btn").click(function (e) {
 			e.preventDefault();
-			// console.log($(this).serializeArray());
 			let formData = $("#affiliate_reg");
 			let dataFormArray = getFormData(formData);
-			// console.log(dataFormArray)
-
 			if (dataFormArray.blog_url.length == 0 && dataFormArray.are_you_influencer.length == 0 && dataFormArray.visitors_number.length == 0) {
 				console.log(false)
 			} else {
@@ -139,15 +136,117 @@ document.addEventListener('DOMContentLoaded', function () {
 				});
 			}
 		});
+		window.validator = {
+
+		}
+
+
+		$(".js-form-validate").submit(function (e) {
+			// e.preventDefault();
+
+			var $form = $(this);
+			var username = $form.find('#username').val();
+			var password = $form.find('#password').val();
+			$form.find('.error__info').text('');
+
+			if (!username) {
+				$form.find('#username').siblings('.error__info').text('Please enter your username');
+				return;
+			} else if (username.length < 5) {
+				$form.find('#username').siblings('.error__info').text('Username must be at least 5 characters long');
+			}
+
+			if (!password) {
+				$form.find('#password').siblings('.error__info').text('Please enter your password');
+				return;
+			} else if (password.length < 5) {
+				$form.find('#password').siblings('.error__info').text('Password must be at least 5 characters long');
+			}
+
+			if ($form.find('.error__info').text() === '') {
+				$.ajax({
+					url: ajax_object.ajax_url,
+					cache: false,
+					type: 'POST',
+					data: {
+						action: 'check_user_exists',
+						username: username
+					},
+					error: function (error) {
+						console.log(error)
+					},
+					success: function (response) {
+						if (response.success) {
+							$.ajax({
+								url: ajax_object.ajax_url,
+								cache: false,
+								type: 'POST',
+								data: {
+									action: 'check_user_credentials',
+									username: username,
+									password: password
+								},
+								success: function (response) {
+									if (response.success === true) {
+										$form.off("submit").submit();
+										// window.location.reload(); 
+										// if (response.redirect) {
+										// 	window.location.href = redirect;
+										// 	window.location = redirect;
+										// 	window.location = reload;
+										// } 
+
+
+									} else if (response.error) {
+										$form.find('.error__info').text('Invalid credentials 123');
+									}
+								}
+							})
+						} else {
+							// alert("User does not exist")
+							$form.find('.error__info').text('Invalid credentials');
+						}
+					}
+				})
+			}
+
+
+
+		})
+		// $(".js-form-validate").validate({
+		// 	rules: {
+		// 		username: {
+		// 			required: true,
+		// 			minlength: 3
+		// 		},
+		// 		password: {
+		// 			required: true,
+		// 			minlength: 6
+		// 		}
+		// 	},
+		// 	messages: {
+		// 		username: {
+		// 			required: "Please enter your username",
+		// 			minlength:
+
+		// 				"Username must be at least 3 characters long"
+		// 		},
+		// 		password: {
+		// 			required: "Please enter your password",
+		// 			minlength: "Password must be at least 6 characters long"
+		// 		}
+		// 	},
+		// 	errorInfo: function (error, element) {
+		// 		error.appendTo(element.siblings('.error__info'));
+		// 	},
+		// 	submitHandler: function (form) {
+		// 		form.submit();
+		// 	}
+		// });
+
 
 
 	}) ///jquery ends
-
-
-
-
-
-
 });
 
 

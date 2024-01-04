@@ -22,6 +22,7 @@ function gaming_scripts()
     wp_enqueue_script("bootstrap-js",  _assets_paths("vendor/bootstrap/js/bootstrap.min.js"), ['jquery'], true);
     wp_enqueue_script("isotope-js",  _assets_paths("js/isotope.min.js"), ['jquery'], true);
     wp_enqueue_script("owl-js",  _assets_paths("js/owl-carousel.js"), ['jquery'], true);
+    wp_enqueue_script("validate-js",  _assets_paths("vendor/jquery/jquery.validate.min.js"), ['jquery'], true);
 
     // wp_enqueue_script("slick-js",  _assets_paths("js/slick.js"), ['jquery'], true);
 
