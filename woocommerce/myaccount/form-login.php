@@ -61,7 +61,9 @@ get_template_part('/template-parts/header');
 				<div class="bottom-form mt-4">
 					<?php wp_nonce_field('woocommerce-login', 'woocommerce-login-nonce'); ?>
 					<button type="submit" class="btn btn-primary  woocommerce-button button woocommerce-form-login__submit<?php echo esc_attr(wc_wp_theme_get_element_class_name('button') ? ' ' . wc_wp_theme_get_element_class_name('button') : ''); ?>" name="login" value="<?php esc_attr_e('Log in', 'woocommerce'); ?>"><?php esc_html_e('Log in', 'woocommerce'); ?></button>
-					<a href="#!">Forget password?</a>
+					<a href="#!">
+						<?php esc_html_e('Forget Password?', 'woocommerce') ?>
+					</a>
 					<hr>
 					<a data-bs-toggle="modal" data-bs-target="#myAccountModal" class="btn btn-success"> Create New Account</a>
 				</div>

@@ -7,6 +7,7 @@ require get_template_directory() . '/inc/woocommerce/wc-checkout.php';
 require get_template_directory() . '/inc/woocommerce/wc-myaccount.php';
 require get_template_directory() . '/inc/woocommerce/wc-affiliate.php';
 require get_template_directory() . '/inc/cpt.php';
+require get_template_directory() . '/inc/custom_functions.php';
 
 
 function _assets_paths($path)
@@ -25,10 +26,7 @@ function gaming_scripts()
     wp_enqueue_script("validate-js",  _assets_paths("vendor/jquery/jquery.validate.min.js"), ['jquery'], true);
 
     // wp_enqueue_script("slick-js",  _assets_paths("js/slick.js"), ['jquery'], true);
-
     wp_enqueue_script("accordions-js",  _assets_paths("js/counter.js"), ['jquery'], true);
-
-
     wp_enqueue_script("ajax-script", get_template_directory_uri() . '/assets/js/custom.js', array("jquery"));
 
     wp_localize_script("ajax-script", 'ajax_object', array(
