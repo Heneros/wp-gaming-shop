@@ -18,6 +18,8 @@ add_action('wp_ajax_send_email_for_password_reset', 'send_email_for_password_res
 add_action('wp_ajax_nopriv_send_email_for_password_reset', 'send_email_for_password_reset');
 
 
+
+
 function save_new_password()
 {
     global $wpdb;
@@ -55,3 +57,14 @@ function send_email_for_password_reset()
 
 add_action("wp_ajax_send_email_for_password_reset", "send_email_for_password_reset");
 add_action("wp_ajax_nopriv_send_email_for_password_reset", "send_email_for_password_reset");
+
+
+function check_if_user_exist_in_system()
+{
+    $exists = email_exists($_POST['email']);
+    echo $exists;
+    wp_die();
+}
+
+add_action('wp_ajax_check_if_user_exist_in_system', 'check_if_user_exist_in_system');
+add_action('wp_ajax_nopriv_check_if_user_exist_in_system', 'check_if_user_exist_in_system');

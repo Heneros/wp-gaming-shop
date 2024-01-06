@@ -136,10 +136,6 @@ document.addEventListener('DOMContentLoaded', function () {
 				});
 			}
 		});
-		window.validator = {
-
-		}
-
 
 		$(".js-form-validate").submit(function (e) {
 			// e.preventDefault();
@@ -209,10 +205,59 @@ document.addEventListener('DOMContentLoaded', function () {
 					}
 				})
 			}
-
-
-
 		})
+
+		// function checkIfUserExistInSystem(email) {
+		// 	function validateEmail(email) {
+		// 		var re = /\S+@\S+\.\S+/;
+		// 		return re.test(email);
+		// 	}
+		// 	let validateUserEmail = validateEmail(email);
+		// 	if (validateUserEmail === true) { }
+		// }
+
+		function checkIfUserExistInSystem(email) {
+			const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+			if (emailRegex.test(email)) {
+				// alert('Success email');
+				$.ajax({
+					method: 'POST',
+					url: ajax_object.ajax_url,
+					cache: false,
+					data: {
+						email: email,
+						action: 'check_if_user_exist_in_system'
+					},
+					success: function (html) {
+						if (html == false) {
+							alert("Error Email form")
+						} else {
+							$.ajax({
+								method: 'POST',
+								url: ajax_object.ajax_url,
+								cache: false,
+								data: {
+									email: email,
+									action: 'send_email_for_password_reset'
+								},
+								success: function () {
+									alert("Email Successfully send to you")
+								}
+							})
+						}
+					}
+				})
+			} else {
+				alert('Invalid email');
+			}
+		}
+		$(document).on("click", "#send-lost-password-link", function (e) {
+			e.preventDefault();
+
+			let email = document.getElementById('lost-pass-email').value;
+			checkIfUserExistInSystem(email);
+		});
+
 		// $(".js-form-validate").validate({
 		// 	rules: {
 		// 		username: {
