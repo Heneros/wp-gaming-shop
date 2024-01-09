@@ -8,13 +8,17 @@
  */
 get_header();
 
+global $current_user;
+wp_get_current_user();
+$page_ID = $post->ID;
+
 get_template_part('template-parts/header');
 global $post;
 global $wpdb;
 $uId = (int)$_GET['id'];
 
 $getUser = $wpdb->get_results("SELECT * FROM `wp_users` WHERE `ID` = '$uId' ");
-var_dump($getUser);
+// var_dump($getUser);
 ?>
 <div class="container">
     <div class="row">
@@ -22,7 +26,7 @@ var_dump($getUser);
             <div class="text-align">
                 <h3>Reset Password</h3>
                 <form class="mt-4" id="enter_new_password_form">
-                    <input type="hidden" name="Uid" value="<?= $getUser[0]->ID ?>">
+                    <input type="hidden" name="Uid" value="<?php echo $getUser[0]->ID ?>">
                     <div class="form-group ">
                         <label for="password">Password</label>
                         <input type="password" name="password" id="password" placeholder="Enter your password" class="form-control">

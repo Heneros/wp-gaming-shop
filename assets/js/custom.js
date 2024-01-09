@@ -258,6 +258,37 @@ document.addEventListener('DOMContentLoaded', function () {
 			checkIfUserExistInSystem(email);
 		});
 
+		$("#enter_new_password_btn").click(function (e) {
+			e.preventDefault();
+			let formData = $("#enter_new_password_form");
+
+			let dataFormArray = getFormData(formData);
+			// console.log(dataFormArray);
+			if (dataFormArray.password.length == 0 || dataFormArray.password.length == 0) {
+				alert("Empty field")
+			} else if (dataFormArray.password.length < 6 || dataFormArray.password.length < 6) {
+				alert("The password must be no less than 6 characters");
+			} else if (dataFormArray.password != dataFormArray.password) {
+				alert("The passwords must be the same");
+			} else {
+				$.ajax({
+					method: 'POST',
+					url: ajax_object.ajax_url,
+					cache: false,
+					data: {
+						dataFormArray: dataFormArray,
+						action: 'save_new_password'
+					},
+					error: function (error) {
+						console.log(error);
+					},
+					success: function (success) {
+						window.location.href = 'http://localhost/wp-gaming-shop/my-account/edit-account'
+					}
+				})
+			}
+		})
+
 		// $(".js-form-validate").validate({
 		// 	rules: {
 		// 		username: {
