@@ -137,75 +137,124 @@ document.addEventListener('DOMContentLoaded', function () {
 			}
 		});
 
+		// $(".js-form-validate").submit(function (e) {
+		// 	e.preventDefault();
+
+		// 	var $form = $(this);
+
+		// 	var username = $form.find('#reg_username').val();
+		// 	var password = $form.find('#reg_password').val();
+		// 	$form.find('.error__info').text('');
+
+		// 	// console.log(username);
+		// 	if (!username) {
+		// 		$form.find('#reg_username').siblings('.error__info').text('Please enter your username').show();;
+		// 		return;
+		// 	} else if (username.length < 5) {
+		// 		$form.find('#reg_username').siblings('.error__info').text('Username must be at least 5 characters long').show();;
+		// 	}
+		// 	if (!password) {
+		// 		$form.find('#reg_password').siblings('.error__info').text('Please enter your password');
+		// 		return;
+		// 	} else if (password.length < 5) {
+		// 		$form.find('#reg_password').siblings('.error__info').text('Password must be at least 5 characters long');
+		// 	}
+
+		// 	if ($form.find('.error__info').text() === '') {
+		// 		$.ajax({
+		// 			url: ajax_object.ajax_url,
+		// 			cache: false,
+		// 			type: 'POST',
+		// 			data: {
+		// 				action: 'check_user_exists',
+		// 				username: username
+		// 			},
+		// 			error: function (error) {
+		// 				console.log(error)
+		// 			},
+		// 			success: function (response) {
+		// 				if (response.success) {
+		// 					$.ajax({
+		// 						url: ajax_object.ajax_url,
+		// 						cache: false,
+		// 						type: 'POST',
+		// 						data: {
+		// 							action: 'check_user_credentials',
+		// 							username: username,
+		// 							password: password
+		// 						},
+		// 						success: function (response) {
+		// 							if (response.success === true) {
+		// 								alert("Success");
+		// 								// $.ajax({
+
+		// 								// })
+		// 							} else if (response.error) {
+		// 								$form.find('.error__info').text('Invalid credentials 123');
+		// 							}
+		// 						}
+		// 					})
+		// 				} else {
+		// 					$form.find('.error__info').text('Invalid credentials');
+		// 				}
+		// 			}
+		// 		})
+		// 	}
+		// });
 		$(".js-form-validate").submit(function (e) {
-			// e.preventDefault();
+			e.preventDefault();
 
 			var $form = $(this);
-			var username = $form.find('#username').val();
-			var password = $form.find('#password').val();
+
+			var reg_username = $form.find('#reg_username').val();
+			var reg_password = $form.find('#reg_password').val();
+			var reg_email = $form.find("#reg_email").val();
 			$form.find('.error__info').text('');
 
-			if (!username) {
-				$form.find('#username').siblings('.error__info').text('Please enter your username');
-				return;
-			} else if (username.length < 5) {
-				$form.find('#username').siblings('.error__info').text('Username must be at least 5 characters long');
-			}
-
-			if (!password) {
-				$form.find('#password').siblings('.error__info').text('Please enter your password');
-				return;
-			} else if (password.length < 5) {
-				$form.find('#password').siblings('.error__info').text('Password must be at least 5 characters long');
-			}
-
-			if ($form.find('.error__info').text() === '') {
+			// console.log(username);
+			// if (!username) {
+			// 	$form.find('#reg_username').siblings('.error__info').text('Please enter your username');
+			// 	return;
+			// } else if (username.length < 5) {
+			// 	$form.find('#reg_username').siblings('.error__info').text('Username must be at least 5 characters long')
+			// }
+			// if (!password) {
+			// 	$form.find('#reg_password').siblings('.error__info').text('Please enter your password');
+			// 	return;
+			// } else if (password.length < 5) {
+			// 	$form.find('#reg_password').siblings('.error__info').text('Password must be at least 5 characters long');
+			// }
+			// if ($form.find('.error__info').text() === '') {
+			if (true) {
 				$.ajax({
 					url: ajax_object.ajax_url,
 					cache: false,
 					type: 'POST',
 					data: {
-						action: 'check_user_exists',
-						username: username
+						action: 'reg_form',
+						reg_username: reg_username,
+						reg_password: reg_password,
+						reg_email: reg_email
 					},
 					error: function (error) {
 						console.log(error)
 					},
 					success: function (response) {
-						if (response.success) {
-							$.ajax({
-								url: ajax_object.ajax_url,
-								cache: false,
-								type: 'POST',
-								data: {
-									action: 'check_user_credentials',
-									username: username,
-									password: password
-								},
-								success: function (response) {
-									if (response.success === true) {
-										$form.off("submit").submit();
-										// window.location.reload(); 
-										// if (response.redirect) {
-										// 	window.location.href = redirect;
-										// 	window.location = redirect;
-										// 	window.location = reload;
-										// } 
-
-
-									} else if (response.error) {
-										$form.find('.error__info').text('Invalid credentials 123');
-									}
-								}
-							})
+						response = JSON.parse(response);
+						if (response.error) {
+							$form.find('#reg_username').siblings('.error__info').text(response.error);
+							$form.find('#reg_email').siblings('.error__info').text(response.error);
 						} else {
-							// alert("User does not exist")
-							$form.find('.error__info').text('Invalid credentials');
+							
 						}
+
 					}
 				})
 			}
+
+
 		})
+
 
 		// function checkIfUserExistInSystem(email) {
 		// 	function validateEmail(email) {
@@ -257,6 +306,9 @@ document.addEventListener('DOMContentLoaded', function () {
 			let email = document.getElementById('lost-pass-email').value;
 			checkIfUserExistInSystem(email);
 		});
+
+
+
 
 		$("#enter_new_password_btn").click(function (e) {
 			e.preventDefault();

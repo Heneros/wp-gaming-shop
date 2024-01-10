@@ -45,7 +45,7 @@ get_template_part('/template-parts/header');
 
 		<div class="col-md-6 col-sm-12  log-parent__form">
 
-			<form class="woocommerce-form woocommerce-form-login login mt-4 js-form-validate" id="validate-form" method="post" novalidate <?php do_action('woocommerce_register_form_tag'); ?>>
+			<form class="woocommerce-form woocommerce-form-login login mt-4" id="validate-form" method="post" novalidate <?php do_action('woocommerce_register_form_tag'); ?>>
 				<?php do_action('woocommerce_login_form_start'); ?>
 
 				<div class="form-group log-field">

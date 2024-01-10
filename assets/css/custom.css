@@ -496,8 +496,7 @@
 .woocommerce-MyAccount-navigation  ul li{
     white-space: nowrap;
 }
-/* .log-bar {
-    width: calc(100% / 2 - 40px);
-    padding: 41px 0px 0px 0px;
-    width: 100%;
-} */
+
+.error__info{
+    color: red;
+}

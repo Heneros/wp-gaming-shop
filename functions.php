@@ -9,6 +9,7 @@ require get_template_directory() . '/inc/woocommerce/wc-affiliate.php';
 require get_template_directory() . '/inc/cpt.php';
 require get_template_directory() . '/inc/custom_functions.php';
 require get_template_directory() . '/inc/reset-password.php';
+require get_template_directory() . '/inc/login-registration.php';
 
 function _assets_paths($path)
 {
