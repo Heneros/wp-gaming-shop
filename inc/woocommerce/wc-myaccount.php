@@ -43,9 +43,9 @@ function check_user_exists()
 {
     $username = $_POST['username'];
     if (username_exists($username) || email_exists($username)) {
-        wp_send_json_success();
+        echo json_encode(array('success' => true, 'message' => 'Success check_user_exists'));
     } else {
-        wp_send_json_error();
+        echo json_encode(array('error' => true, 'message' => 'Invalid credentials'));
     }
 
     wp_die();
@@ -58,7 +58,7 @@ add_action('wp_ajax_check_user_credentials', 'check_user_credentials');
 
 function check_user_credentials()
 {
-    $username = $_POST['username'];
+    $username = sanitize_user($_POST['username']);
     $password = $_POST['password'];
 
     $user = wp_signon(array(
@@ -70,7 +70,7 @@ function check_user_credentials()
     if (is_wp_error($user)) {
         echo json_encode(array('error' => false, 'message' => 'Invalid credentials'));
     } else {
-        echo json_encode(array('success' => true, 'message' => '', 'redirect' => home_url('/')));
+        echo json_encode(array('success' => true, 'message' => 'Success Auth', 'redirect' => home_url('/my-account')));
     }
 
     wp_die();

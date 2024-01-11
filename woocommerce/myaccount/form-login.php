@@ -44,23 +44,23 @@ get_template_part('/template-parts/header');
 		</div>
 
 		<div class="col-md-6 col-sm-12  log-parent__form">
-
-			<form class="woocommerce-form woocommerce-form-login login mt-4" id="validate-form" method="post" novalidate <?php do_action('woocommerce_register_form_tag'); ?>>
+			<form class="woocommerce-form woocommerce-form-login login mt-4 check-login validate-form"  method="post">
 				<?php do_action('woocommerce_login_form_start'); ?>
-
 				<div class="form-group log-field">
-					<input type="text" maxlength="25" name="username" id="username" autocomplete="username" placeholder="Email or username" class="woocommerce-Input woocommerce-Input--text input-text form-control" required value="<?php echo (!empty($_POST['username'])) ? esc_attr(wp_unslash($_POST['username'])) : ''; ?>">
+					<label for="login_password">Username</label>
+					<input type="text" maxlength="25" name="login_username" id="login_username" autocomplete="username" placeholder="Username" class="woocommerce-Input woocommerce-Input--text input-text form-control" required value="<?php echo (!empty($_POST['username'])) ? esc_attr(wp_unslash($_POST['username'])) : ''; ?>">
 					<div class="error__info"></div>
 				</div>
 				<div class="form-group log-field">
-					<input type="password" name="password" id="password" autocomplete="current-password" maxlength="45" class="form-control" placeholder="Password...">
+					<label for="login_password">Password</label>
+					<input type="password" name="login_password" id="login_password" autocomplete="current-password" maxlength="45" class="form-control" placeholder="Password...">
 					<?php do_action('woocommerce_login_form'); ?>
 					<div class="error__info"></div>
 				</div>
 
 				<div class="bottom-form mt-4">
 					<?php wp_nonce_field('woocommerce-login', 'woocommerce-login-nonce'); ?>
-					<button type="submit" class="btn btn-primary  " name="login" value="<?php esc_attr_e('Log in', 'woocommerce'); ?>"><?php esc_html_e('Log in', 'woocommerce'); ?></button>
+					<button type="submit" id="login_submit" class="btn btn-primary  submit " name="login" value="<?php esc_attr_e('Log in', 'woocommerce'); ?>"><?php esc_html_e('Log in', 'woocommerce'); ?></button>
 					<a href="#!" data-bs-toggle="modal" data-bs-target="#resetPasswordModal">
 						<?php esc_html_e('Forget Password?', 'woocommerce') ?>
 					</a>

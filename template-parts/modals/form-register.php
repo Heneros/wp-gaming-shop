@@ -27,6 +27,11 @@
                                 <input type="password" class="woocommerce-Input woocommerce-Input--text input-text" name="reg_password" id="reg_password" autocomplete="new-password" />
                                 <div class="error__info"></div>
                             </div>
+                            <div class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                <label for="reg_confirm_password"><?php esc_html_e('Confirm Password', 'woocommerce'); ?>&nbsp;<span class="required">*</span></label>
+                                <input type="password" class="woocommerce-Input woocommerce-Input--text input-text" name="reg_confirm_password" id="reg_confirm_password" autocomplete="new-password" />
+                                <div class="error__info"></div>
+                            </div>
                         <?php else : ?>
                             <p><?php esc_html_e('A link to set a new password will be sent to your email address.', 'woocommerce'); ?></p>
                         <?php endif; ?>

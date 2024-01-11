@@ -13,8 +13,8 @@ function reg_form()
         if (!is_wp_error($user_id)) {
             $user = new WP_User($user_id);
             $user->set_role('subscriber');
-            wp_redirect(home_url('/shop'));
-            exit;
+            $response['redirect'] = home_url('/thank-you-for-registration');
+            // exit;
         }
     } else {
         $response['error'] = 'Email or username already available';

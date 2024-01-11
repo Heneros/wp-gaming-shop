@@ -137,6 +137,129 @@ document.addEventListener('DOMContentLoaded', function () {
 			}
 		});
 
+
+		$(".js-form-validate").submit(function (e) {
+			e.preventDefault();
+
+			var $form = $(this);
+
+			var reg_username = $form.find('#reg_username').val();
+			var reg_password = $form.find('#reg_password').val();
+			var reg_email = $form.find("#reg_email").val();
+			var reg_confirm_password = $form.find("#reg_confirm_password").val();
+			$form.find('.error__info').text('');
+			if (!reg_username) {
+				$form.find('#reg_username').siblings('.error__info').text('Please enter your username');
+				return;
+			} else if (reg_username.length < 5) {
+				$form.find('#reg_username').siblings('.error__info').text('Username must be at least 5 characters long')
+			}
+			if (!reg_password) {
+				$form.find('#reg_password').siblings('.error__info').text('Please enter your password');
+				return;
+			} else if (reg_password.length < 5) {
+				$form.find('#reg_password').siblings('.error__info').text('Password must be at least 5 characters long');
+			} else if (reg_confirm_password !== reg_password) {
+				$form.find('#reg_confirm_password').siblings('.error__info').text('Passwords don\'t match. ');
+			}
+			if ($form.find('.error__info').text() === '') {
+				$.ajax({
+					url: ajax_object.ajax_url,
+					cache: false,
+					type: 'POST',
+					data: {
+						action: 'reg_form',
+						reg_username: reg_username,
+						reg_password: reg_password,
+						reg_email: reg_email
+					},
+					error: function (error) {
+						console.log(error)
+					},
+					success: function (response) {
+						response = JSON.parse(response);
+						if (response.error) {
+							$form.find('#reg_username').siblings('.error__info').text(response.error);
+							$form.find('#reg_email').siblings('.error__info').text(response.error);
+						} else if (response.redirect) {
+
+							window.location.href = response.redirect;
+						}
+					}
+				})
+			}
+		});
+
+		$(".validate-form").submit(function (e) {
+			e.preventDefault();
+
+			var $form = $(this);
+
+			var login_username = $form.find('#login_username').val();
+			var login_password = $form.find('#login_password').val();
+			$form.find('.error__info').text('');
+
+
+			if (!login_username) {
+				$form.find('#login_username').siblings('.error__info').text('Please enter your username');
+				return;
+			} else if (login_username.length < 5) {
+				$form.find('#login_username').siblings('.error__info').text('Username must be at least 5 characters long')
+			}
+			if (!login_password) {
+				$form.find('#login_password').siblings('.error__info').text('Please enter your password');
+				return;
+			} else if (login_password.length < 5) {
+				$form.find('#login_password').siblings('.error__info').text('Password must be at least 5 characters long');
+			}
+			if ($form.find('.error__info').text() === '') {
+				$.ajax({
+					url: ajax_object.ajax_url,
+					cache: false,
+					type: 'POST',
+					data: {
+						action: 'check_user_exists',
+						username: login_username
+					},
+					error: function (error) {
+						console.log(error)
+					},
+					success: function (response) {
+						response = JSON.parse(response);
+						console.log(response);
+						if (response.success) {
+					
+							$.ajax({
+								url: ajax_object.ajax_url,
+								cache: false,
+								type: 'POST',
+								data: {
+									action: 'check_user_credentials',
+									username: login_username,
+									password: login_password,
+								},
+								error: function (error) {
+									console.log(error)
+								},
+								success: function (response) {
+									response = JSON.parse(response);
+
+									if (response.success) {
+										window.location.href = response.redirect;
+									} else if (response.error) {
+										$form.find('.error__info').text(response.message);
+									}
+								}
+							});
+						} else {
+							$form.find('.error__info').text(response.message);
+						}
+					}
+				});
+			}
+		});
+
+
 		// $(".js-form-validate").submit(function (e) {
 		// 	e.preventDefault();
 
@@ -201,69 +324,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		// 		})
 		// 	}
 		// });
-		$(".js-form-validate").submit(function (e) {
-			e.preventDefault();
-
-			var $form = $(this);
-
-			var reg_username = $form.find('#reg_username').val();
-			var reg_password = $form.find('#reg_password').val();
-			var reg_email = $form.find("#reg_email").val();
-			$form.find('.error__info').text('');
-
-			// console.log(username);
-			// if (!username) {
-			// 	$form.find('#reg_username').siblings('.error__info').text('Please enter your username');
-			// 	return;
-			// } else if (username.length < 5) {
-			// 	$form.find('#reg_username').siblings('.error__info').text('Username must be at least 5 characters long')
-			// }
-			// if (!password) {
-			// 	$form.find('#reg_password').siblings('.error__info').text('Please enter your password');
-			// 	return;
-			// } else if (password.length < 5) {
-			// 	$form.find('#reg_password').siblings('.error__info').text('Password must be at least 5 characters long');
-			// }
-			// if ($form.find('.error__info').text() === '') {
-			if (true) {
-				$.ajax({
-					url: ajax_object.ajax_url,
-					cache: false,
-					type: 'POST',
-					data: {
-						action: 'reg_form',
-						reg_username: reg_username,
-						reg_password: reg_password,
-						reg_email: reg_email
-					},
-					error: function (error) {
-						console.log(error)
-					},
-					success: function (response) {
-						response = JSON.parse(response);
-						if (response.error) {
-							$form.find('#reg_username').siblings('.error__info').text(response.error);
-							$form.find('#reg_email').siblings('.error__info').text(response.error);
-						} else {
-							
-						}
-
-					}
-				})
-			}
-
-
-		})
-
-
-		// function checkIfUserExistInSystem(email) {
-		// 	function validateEmail(email) {
-		// 		var re = /\S+@\S+\.\S+/;
-		// 		return re.test(email);
-		// 	}
-		// 	let validateUserEmail = validateEmail(email);
-		// 	if (validateUserEmail === true) { }
-		// }
 
 		function checkIfUserExistInSystem(email) {
 			const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
