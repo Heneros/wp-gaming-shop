@@ -10,6 +10,9 @@ require get_template_directory() . '/inc/cpt.php';
 require get_template_directory() . '/inc/custom_functions.php';
 require get_template_directory() . '/inc/reset-password.php';
 require get_template_directory() . '/inc/login-registration.php';
+require get_template_directory() . '/inc/rest_api/custom_rest_api.php';
+
+
 
 function _assets_paths($path)
 {

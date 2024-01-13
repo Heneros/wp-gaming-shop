@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			}
 		});
 
-
+		///form my-account. login page 
 		$(".js-form-validate").submit(function (e) {
 			e.preventDefault();
 
@@ -190,9 +190,10 @@ document.addEventListener('DOMContentLoaded', function () {
 			}
 		});
 
+
+		///form my-account. login page
 		$(".validate-form").submit(function (e) {
 			e.preventDefault();
-
 			var $form = $(this);
 
 			var login_username = $form.find('#login_username').val();
@@ -228,7 +229,7 @@ document.addEventListener('DOMContentLoaded', function () {
 						response = JSON.parse(response);
 						console.log(response);
 						if (response.success) {
-					
+
 							$.ajax({
 								url: ajax_object.ajax_url,
 								cache: false,
@@ -260,71 +261,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 
 
-		// $(".js-form-validate").submit(function (e) {
-		// 	e.preventDefault();
-
-		// 	var $form = $(this);
-
-		// 	var username = $form.find('#reg_username').val();
-		// 	var password = $form.find('#reg_password').val();
-		// 	$form.find('.error__info').text('');
-
-		// 	// console.log(username);
-		// 	if (!username) {
-		// 		$form.find('#reg_username').siblings('.error__info').text('Please enter your username').show();;
-		// 		return;
-		// 	} else if (username.length < 5) {
-		// 		$form.find('#reg_username').siblings('.error__info').text('Username must be at least 5 characters long').show();;
-		// 	}
-		// 	if (!password) {
-		// 		$form.find('#reg_password').siblings('.error__info').text('Please enter your password');
-		// 		return;
-		// 	} else if (password.length < 5) {
-		// 		$form.find('#reg_password').siblings('.error__info').text('Password must be at least 5 characters long');
-		// 	}
-
-		// 	if ($form.find('.error__info').text() === '') {
-		// 		$.ajax({
-		// 			url: ajax_object.ajax_url,
-		// 			cache: false,
-		// 			type: 'POST',
-		// 			data: {
-		// 				action: 'check_user_exists',
-		// 				username: username
-		// 			},
-		// 			error: function (error) {
-		// 				console.log(error)
-		// 			},
-		// 			success: function (response) {
-		// 				if (response.success) {
-		// 					$.ajax({
-		// 						url: ajax_object.ajax_url,
-		// 						cache: false,
-		// 						type: 'POST',
-		// 						data: {
-		// 							action: 'check_user_credentials',
-		// 							username: username,
-		// 							password: password
-		// 						},
-		// 						success: function (response) {
-		// 							if (response.success === true) {
-		// 								alert("Success");
-		// 								// $.ajax({
-
-		// 								// })
-		// 							} else if (response.error) {
-		// 								$form.find('.error__info').text('Invalid credentials 123');
-		// 							}
-		// 						}
-		// 					})
-		// 				} else {
-		// 					$form.find('.error__info').text('Invalid credentials');
-		// 				}
-		// 			}
-		// 		})
-		// 	}
-		// });
-
+		///form my-account
 		function checkIfUserExistInSystem(email) {
 			const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 			if (emailRegex.test(email)) {
@@ -360,6 +297,8 @@ document.addEventListener('DOMContentLoaded', function () {
 				alert('Invalid email');
 			}
 		}
+
+		///form my-account
 		$(document).on("click", "#send-lost-password-link", function (e) {
 			e.preventDefault();
 
@@ -401,40 +340,17 @@ document.addEventListener('DOMContentLoaded', function () {
 			}
 		})
 
-		// $(".js-form-validate").validate({
-		// 	rules: {
-		// 		username: {
-		// 			required: true,
-		// 			minlength: 3
-		// 		},
-		// 		password: {
-		// 			required: true,
-		// 			minlength: 6
-		// 		}
-		// 	},
-		// 	messages: {
-		// 		username: {
-		// 			required: "Please enter your username",
-		// 			minlength:
-
-		// 				"Username must be at least 3 characters long"
-		// 		},
-		// 		password: {
-		// 			required: "Please enter your password",
-		// 			minlength: "Password must be at least 6 characters long"
-		// 		}
-		// 	},
-		// 	errorInfo: function (error, element) {
-		// 		error.appendTo(element.siblings('.error__info'));
-		// 	},
-		// 	submitHandler: function (form) {
-		// 		form.submit();
-		// 	}
-		// });
 
 
+		$("#portfolio-posts-btn").on("click", function (e) {
+			e.preventDefault();
+			var container = ("#portfolio-container").val();
+			console.log(container)
+			console.log(e.target)
+		})
 
-	}) ///jquery ends
+
+	}) ///custom code jquery ends
 });
 
 
